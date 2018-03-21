@@ -75,44 +75,6 @@ class GalleryController
     /**
      * Retrieves the list of galleries (paginated).
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Retrieves the list of galleries (paginated).",
-     *     @SWG\Parameter(
-     *         name="page",
-     *         in="query",
-     *         description="Page for gallery list pagination",
-     *         required=false,
-     *         type="string"
-     *     ),
-     *     @SWG\Parameter(
-     *         name="count",
-     *         in="query",
-     *         description="Number of galleries by page",
-     *         required=false,
-     *         type="string"
-     *     ),
-     *     @SWG\Parameter(
-     *         name="enabled",
-     *         in="query",
-     *         description="Enabled/Disabled galleries filter",
-     *         required=false,
-     *         type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="Sonata\DatagridBundle\Pager\PagerInterface")
-     *     )
-     * )
-     *
-     *
-     * @QueryParam(name="page", requirements="\d+", default="1", description="Page for gallery list pagination")
-     * @QueryParam(name="count", requirements="\d+", default="10", description="Number of galleries by page")
-     * @QueryParam(name="enabled", requirements="0|1", nullable=true, strict=true, description="Enabled/Disabled galleries filter")
-     *
-     * @View(serializerGroups={"sonata_api_read"}, serializerEnableMaxDepthChecks=true)
-     *
      * @param ParamFetcherInterface $paramFetcher
      *
      * @return PagerInterface
@@ -160,23 +122,6 @@ class GalleryController
     /**
      * Retrieves a specific gallery.
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Retrieves a specific gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="sonata_media_api_form_gallery")
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when gallery is not found"
-     *     )
-     * )
-     *
-     *
-     * @View(serializerGroups={"sonata_api_read"}, serializerEnableMaxDepthChecks=true)
-     *
      * @param $id
      *
      * @return GalleryInterface
@@ -188,23 +133,6 @@ class GalleryController
 
     /**
      * Retrieves the medias of specified gallery.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Retrieves the medias of specified gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="Sonata\MediaBundle\Model\Media")
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when gallery is not found"
-     *     )
-     * )
-     *
-     *
-     * @View(serializerGroups={"sonata_api_read"}, serializerEnableMaxDepthChecks=true)
      *
      * @param $id
      *
@@ -225,23 +153,6 @@ class GalleryController
     /**
      * Retrieves the galleryhasmedias of specified gallery.
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Retrieves the galleryhasmedias of specified gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="Sonata\MediaBundle\Model\GalleryHasMedia")
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when gallery is not found"
-     *     )
-     * )
-     *
-     *
-     * @View(serializerGroups={"sonata_api_read"}, serializerEnableMaxDepthChecks=true)
-     *
      * @param $id
      *
      * @return GalleryHasMediaInterface[]
@@ -253,21 +164,6 @@ class GalleryController
 
     /**
      * Adds a gallery.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Adds a gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="sonata_media_api_form_gallery")
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Returned when an error has occurred while gallery creation"
-     *     )
-     * )
-     *
      *
      * @param Request $request A Symfony request
      *
@@ -283,25 +179,6 @@ class GalleryController
     /**
      * Updates a gallery.
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Updates a gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="sonata_media_api_form_gallery")
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Returned when an error has occurred while gallery creation"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when unable to find gallery"
-     *     )
-     * )
-     *
-     *
      * @param int     $id      User id
      * @param Request $request A Symfony request
      *
@@ -316,21 +193,6 @@ class GalleryController
 
     /**
      * Adds a media to a gallery.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Adds a media to a gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="sonata_media_api_form_gallery")
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Returned when an error has occurred while gallery/media attachment"
-     *     )
-     * )
-     *
      *
      * @param int     $galleryId A gallery identifier
      * @param int     $mediaId   A media identifier
@@ -359,21 +221,6 @@ class GalleryController
     /**
      * Updates a media to a gallery.
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Updates a media to a gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="sonata_media_api_form_gallery")
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when an error if media cannot be found in gallery"
-     *     )
-     * )
-     *
-     *
      * @param int     $galleryId A gallery identifier
      * @param int     $mediaId   A media identifier
      * @param Request $request   A Symfony request
@@ -398,24 +245,6 @@ class GalleryController
 
     /**
      * Deletes a media association to a gallery.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Deletes a media association to a gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when media is successfully deleted from gallery"
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Returned when an error has occurred while media deletion of gallery"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when unable to find gallery or media"
-     *     )
-     * )
-     *
      *
      * @param int $galleryId A gallery identifier
      * @param int $mediaId   A media identifier
@@ -445,24 +274,6 @@ class GalleryController
 
     /**
      * Deletes a gallery.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Deletes a gallery.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when gallery is successfully deleted"
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Returned when an error has occurred while gallery deletion"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when unable to find gallery"
-     *     )
-     * )
-     *
      *
      * @param int $id A Gallery identifier
      *

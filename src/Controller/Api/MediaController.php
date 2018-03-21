@@ -73,44 +73,6 @@ class MediaController
     /**
      * Retrieves the list of medias (paginated).
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Retrieves the list of medias (paginated).",
-     *     @SWG\Parameter(
-     *         name="page",
-     *         in="query",
-     *         description="Page for media list pagination",
-     *         required=false,
-     *         type="string"
-     *     ),
-     *     @SWG\Parameter(
-     *         name="count",
-     *         in="query",
-     *         description="Number of medias by page",
-     *         required=false,
-     *         type="string"
-     *     ),
-     *     @SWG\Parameter(
-     *         name="enabled",
-     *         in="query",
-     *         description="Enabled/Disabled medias filter",
-     *         required=false,
-     *         type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="Sonata\DatagridBundle\Pager\PagerInterface")
-     *     )
-     * )
-     *
-     *
-     * @QueryParam(name="page", requirements="\d+", default="1", description="Page for media list pagination")
-     * @QueryParam(name="count", requirements="\d+", default="10", description="Number of medias by page")
-     * @QueryParam(name="enabled", requirements="0|1", nullable=true, strict=true, description="Enabled/Disabled medias filter")
-     *
-     * @View(serializerGroups={"sonata_api_read"}, serializerEnableMaxDepthChecks=true)
-     *
      * @param ParamFetcherInterface $paramFetcher
      *
      * @return PagerInterface
@@ -157,24 +119,6 @@ class MediaController
 
     /**
      * Retrieves a specific media.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Retrieves a specific media.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="Sonata\MediaBundle\Model\Media")
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when media is not found"
-     *     )
-     * )
-     *
-     *
-     * @View(serializerGroups={"sonata_api_read"}, serializerEnableMaxDepthChecks=true)
-     *
      * @param $id
      *
      * @return MediaInterface
@@ -186,20 +130,6 @@ class MediaController
 
     /**
      * Returns media urls for each format.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Returns media urls for each format.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when media is not found"
-     *     )
-     * )
-     *
      *
      * @param $id
      *
@@ -226,20 +156,6 @@ class MediaController
     /**
      * Returns media binary content for each format.
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Returns media binary content for each format.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when media is not found"
-     *     )
-     * )
-     *
-     *
      * @param int     $id      The media id
      * @param string  $format  The format
      * @param Request $request
@@ -262,24 +178,6 @@ class MediaController
     /**
      * Deletes a medium.
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Deletes a medium.",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when medium is successfully deleted"
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Returned when an error has occurred while deleting the medium"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when unable to find medium"
-     *     )
-     * )
-     *
-     *
      * @param int $id A medium identifier
      *
      * @throws NotFoundHttpException
@@ -299,25 +197,6 @@ class MediaController
      * Updates a medium
      * If you need to upload a file (depends on the provider) you will need to do so by sending content as a multipart/form-data HTTP Request
      * See documentation for more details.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Updates a medium",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="Sonata\MediaBundle\Model\Media")
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Returned when an error has occurred while medium update"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when unable to find medium"
-     *     )
-     * )
-     *
      *
      * @param int     $id      A Medium identifier
      * @param Request $request A Symfony request
@@ -346,27 +225,6 @@ class MediaController
      * If you need to upload a file (depends on the provider) you will need to do so by sending content as a multipart/form-data HTTP Request
      * See documentation for more details.
      *
-     * @Operation(
-     *     tags={""},
-     *     summary="Adds a medium of given provider",
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="Sonata\MediaBundle\Model\Media")
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Returned when an error has occurred while medium creation"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when unable to find medium"
-     *     )
-     * )
-     *
-     *
-     * @Route(requirements={"provider"="[A-Za-z0-9.]*"})
-     *
      * @param string  $provider A media provider
      * @param Request $request  A Symfony request
      *
@@ -392,95 +250,6 @@ class MediaController
 
     /**
      * Set Binary content for a specific media.
-     *
-     * @Operation(
-     *     tags={""},
-     *     summary="Set Binary content for a specific media.",
-     *     @SWG\Parameter(
-     *         name="name",
-     *         in="body",
-     *         description="",
-     *         required=false,
-     *         type="string",
-     *         schema=""
-     *     ),
-     *     @SWG\Parameter(
-     *         name="providerReference",
-     *         in="body",
-     *         description="todo",
-     *         required=false,
-     *         type="string",
-     *         schema=""
-     *     ),
-     *     @SWG\Parameter(
-     *         name="providerStatus",
-     *         in="body",
-     *         description="todo",
-     *         required=false,
-     *         type="string",
-     *         schema=""
-     *     ),
-     *     @SWG\Parameter(
-     *         name="description",
-     *         in="body",
-     *         description="",
-     *         required=false,
-     *         type="string",
-     *         schema=""
-     *     ),
-     *     @SWG\Parameter(
-     *         name="enabled",
-     *         in="body",
-     *         description="",
-     *         required=false,
-     *         type="boolean",
-     *         schema=""
-     *     ),
-     *     @SWG\Parameter(
-     *         name="copyright",
-     *         in="body",
-     *         description="",
-     *         required=false,
-     *         type="string",
-     *         schema=""
-     *     ),
-     *     @SWG\Parameter(
-     *         name="author_name",
-     *         in="body",
-     *         description="",
-     *         required=false,
-     *         type="string",
-     *         schema=""
-     *     ),
-     *     @SWG\Parameter(
-     *         name="context",
-     *         in="body",
-     *         description="",
-     *         required=false,
-     *         type="string",
-     *         schema=""
-     *     ),
-     *     @SWG\Parameter(
-     *         name="cdn_is_flushable",
-     *         in="body",
-     *         description="",
-     *         required=false,
-     *         type="boolean",
-     *         schema=""
-     *     ),
-     *     @SWG\Response(
-     *         response="200",
-     *         description="Returned when successful",
-     *         @Model(type="Sonata\MediaBundle\Model\Media")
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Returned when media is not found"
-     *     )
-     * )
-     *
-     *
-     * @View(serializerGroups={"sonata_api_read"}, serializerEnableMaxDepthChecks=true)
      *
      * @param $id
      * @param Request $request A Symfony request
